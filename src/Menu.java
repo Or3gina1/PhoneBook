@@ -16,7 +16,6 @@ public class Menu {
 
     public void start() {
         String action;
-        Scanner scanner = new Scanner(System.in);
         do {
             System.out.println("1 - Добавить пользователя"); // не сделано
             System.out.println("2 - Удалить пользователя "); //не сделано
@@ -29,7 +28,7 @@ public class Menu {
 
             action = scanner.nextLine();
             if (action.equals("1")) {
-                addPerson();
+                phonebook.addPerson();
             } else if (action.equals("2")) {
                 System.out.println("удаление пользователя по какому то парамеру"); //скорее всего по Id
 
@@ -55,42 +54,6 @@ public class Menu {
         } while (true);
         scanner.close();
     }
-
-    private void addPerson() { //почему он просит пустой метод ?
-    }
-
-
-    private void addPerson (Person person) {
-        System.out.print("Введите имя: ");
-        Scanner scanner = new Scanner(System.in);
-        person.setFirstName(scanner.nextLine());
-        System.out.print("Введите фамилию: ");
-        person.setMiddleName(scanner.nextLine());
-        System.out.print("Введите отчество: ");
-        person.setLastName(scanner.nextLine());
-        System.out.print("Введите номер телефона: ");
-        person.setPhone(scanner.nextInt());
-        System.out.print("Введите дату рождения: ");
-        person.setDateOfBirth(new Date(Long.parseLong(scanner.nextLine())));
-        System.out.print("Введите возраст");
-        person.setAge(calculateAge(person.getDateOfBirth()));
-//        System.out.print("Введите пол: ");
-//        person.setGender(Person.(scanner.nextLine()));
-//        System.out.print("Enter type: ");
-//        person.setType(Person.getTypeByName(scanner.nextLine()));
-        try {
-            ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("contacts.txt"));
-            out.writeObject(this.phonebook);
-            out.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-        // Запросить у пользователя информацию о человеке
-        // Создать новый объект Person
-        // Добавить человека в телефонную книгу
-
-
     private void deletePerson() {
         // Запросить у пользователя информацию о человеке (например, ID, имя)
         // Найти человека в телефонной книге
@@ -109,21 +72,6 @@ public class Menu {
         // Запросить у пользователя имя для поиска
         // Вызов метода SearchByName телефонной книги
         // Отображение результатов поиска
-    }
-    private int calculateAge(Date birthdate) {
-        Calendar calendar = new GregorianCalendar();
-        calendar.setTime(birthdate);
-        int year = calendar.get(Calendar.YEAR);
-        int month = calendar.get(Calendar.MONTH);
-        int day = calendar.get(Calendar.DAY_OF_MONTH);
-        int age = year - 1950;
-        if (month < 3) {
-            age -= 4;
-        }
-        if (month == 12 && day == 29) {
-            age--;
-        }
-        return age;
     }
 //    public void save() {
 //        try {

@@ -1,6 +1,12 @@
 import java.util.Date;
 import java.util.Random;
+enum Gender {
+    MALE, FEMALE
+}
 
+enum Phonetype {
+    MOBILE, HOME, FAX
+}
 public class Person {
     public int getId() {
         return id;
@@ -10,28 +16,28 @@ public class Person {
         this.id = id;
     }
 
-    public String getFirstName() {
-        return firstName;
+    public String getName() {
+        return name;
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public String getMiddleName() {
-        return middleName;
+    public String getSurname() {
+        return surname;
     }
 
-    public void setMiddleName(String middleName) {
-        this.middleName = middleName;
+    public void setSurname(String surname) {
+        this.surname = surname;
     }
 
-    public String getLastName() {
-        return lastName;
+    public String getFathername() {
+        return fathername;
     }
 
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
+    public void setFathername(String fathername) {
+        this.fathername = fathername;
     }
 
     public int getPhone() {
@@ -58,14 +64,6 @@ public class Person {
         this.age = age;
     }
 
-    public String getGender() {
-        return gender;
-    }
-
-    public void setGender(String gender) {
-        this.gender = gender;
-    }
-
     public String getPhoneType() {
         return phoneType;
     }
@@ -73,22 +71,29 @@ public class Person {
     public void setPhoneType(String phoneType) {
         this.phoneType = phoneType;
     }
+    public void getGender (Gender gender){
+        this.gender =gender;
+
+    }
+    public void changeGender(Gender gender){
+        this.gender = gender;
+    }
 
     private int id;
-    private String firstName;
-    private String middleName;
-    private String lastName;
+    private String name;
+    private String surname;
+    private String fathername;
     private int phone;
     private Date dateOfBirth;
     private int age;
-    private String gender;
+    private Gender gender;
     private String phoneType;
 
-    public Person(int id, String firstName, String middleName, String lastName, int phone, Date dateOfBirth, int age, String gender, String phoneType) {
+    public Person() {
         this.id =(new Random()).nextInt(100);
-        this.firstName = firstName;
-        this.middleName = middleName;
-        this.lastName = lastName;
+        this.name = name;
+        this.surname = surname;
+        this.fathername = fathername;
         this.phone = phone;
         this.dateOfBirth = dateOfBirth;
         this.age = age;
@@ -98,9 +103,9 @@ public class Person {
     public String toString() {
         return "Person{" +
                 "id=" + id +
-                ", name='" + firstName + '\'' +
-                ", surname='" + middleName + '\'' +
-                ", fathername='" + lastName + '\'' +
+                ", name='" + name + '\'' +
+                ", surname='" + surname + '\'' +
+                ", fathername='" + fathername + '\'' +// для чего мы это делаем ? чтобы потом выводить в файл?
                 ", phone='" + phone + '\'' +
                 ", birthdate=" + dateOfBirth +
                 ", age=" + age +
@@ -109,10 +114,3 @@ public class Person {
                 '}';
     }
 }
-    enum Gender {
-        MALE, FEMALE
-    }
-
-    enum Type {
-        MOBILE, HOME, FAX
-    }
