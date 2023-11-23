@@ -8,6 +8,7 @@ enum Phonetype {
     MOBILE, HOME, FAX
 }
 public class Person {
+
     public int getId() {
         return id;
     }
@@ -40,11 +41,11 @@ public class Person {
         this.fathername = fathername;
     }
 
-    public int getPhone() {
+    public String getPhone() {
         return phone;
     }
 
-    public void setPhone(int phone) {
+    public void setPhone(String phone) {
         this.phone = phone;
     }
 
@@ -83,13 +84,16 @@ public class Person {
     private String name;
     private String surname;
     private String fathername;
-    private int phone;
+    private String phone;
     private Date dateOfBirth;
     private int age;
     private Gender gender;
     private String phoneType;
+    public Person(){ // Пустой конструктор запилил
 
-    public Person() {
+    }
+
+    public Person(int id, String name, String surname, String fathername, String phone, int age, Date dateOfBirth) {
         this.id =(new Random()).nextInt(100);
         this.name = name;
         this.surname = surname;
@@ -97,8 +101,8 @@ public class Person {
         this.phone = phone;
         this.dateOfBirth = dateOfBirth;
         this.age = age;
-        this.gender = gender;
-        this.phoneType = phoneType;
+//        this.gender = gender;
+//        this.phoneType = phoneType;
     }
     public String toString() {
         return "Person{" +

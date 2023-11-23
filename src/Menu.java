@@ -9,9 +9,15 @@ public class Menu {
     private Phonebook phonebook;
     private Scanner scanner;
 
+//    public Person (){
+//
+//    };
+    public Person person;
+
     public Menu() {
         phonebook = new Phonebook();
         scanner = new Scanner(System.in);
+        person = new Person();// нужно ли так делать или иначе?
     }
 
     public void start() {
@@ -28,7 +34,7 @@ public class Menu {
 
             action = scanner.nextLine();
             if (action.equals("1")) {
-                phonebook.addPerson();
+                phonebook.addPerson(person);
             } else if (action.equals("2")) {
                 System.out.println("удаление пользователя по какому то парамеру"); //скорее всего по Id
 
