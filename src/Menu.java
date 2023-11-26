@@ -1,5 +1,6 @@
 import java.awt.*;
 import java.io.*;
+import java.text.ParseException;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
@@ -20,10 +21,10 @@ public class Menu {
         person = new Person();// нужно ли так делать или иначе?
     }
 
-    public void start() {
+    public void start() throws ParseException {
         String action;
         do {
-            System.out.println("1 - Добавить пользователя"); // не сделано
+            System.out.println("\n 1 - Добавить пользователя"); // не сделано
             System.out.println("2 - Удалить пользователя "); //не сделано
             System.out.println("3 - Редактирование"); // не сделано
             System.out.println("4 - Поиск *"); // не сделано
@@ -37,13 +38,13 @@ public class Menu {
                 phonebook.addPerson(person);
             } else if (action.equals("2")) {
                 System.out.println("удаление пользователя по какому то парамеру"); //скорее всего по Id
-
+//                phonebook.deletePerson(person);
             } else if (action.equals("3")) {
                 System.out.println("редактировать"); //уже добавленного
 
             } else if (action.equals("4")) {
                 System.out.println("Поиск"); // нужно ли реализовывать поиск и по * и по _
-
+                phonebook.search(person);
             } else if (action.equals("5")) {
                 System.out.println("Фильтрация пользователей"); //постараться сделать через стрим
 
@@ -51,8 +52,7 @@ public class Menu {
                 System.out.println("сортировка пользователей"); //постараться сделать через стрим
 
             } else if (action.equals("7")) {
-                System.out.println("сохранение всей информации в файл. указать расширение");
-
+                phonebook.save(person);
             } else if (action.equals("8")) {
                 System.out.println("Выход");
                 break;

@@ -65,20 +65,6 @@ public class Person {
         this.age = age;
     }
 
-    public String getPhoneType() {
-        return phoneType;
-    }
-
-    public void setPhoneType(String phoneType) {
-        this.phoneType = phoneType;
-    }
-    public void getGender (Gender gender){
-        this.gender =gender;
-
-    }
-    public void changeGender(Gender gender){
-        this.gender = gender;
-    }
 
     private int id;
     private String name;
@@ -87,12 +73,10 @@ public class Person {
     private String phone;
     private Date dateOfBirth;
     private int age;
-    private Gender gender;
-    private String phoneType;
-    public Person(){ // Пустой конструктор запилил
+
+    public Person(){
 
     }
-
     public Person(int id, String name, String surname, String fathername, String phone, int age, Date dateOfBirth) {
         this.id =(new Random()).nextInt(100);
         this.name = name;
@@ -113,8 +97,6 @@ public class Person {
                 ", phone='" + phone + '\'' +
                 ", birthdate=" + dateOfBirth +
                 ", age=" + age +
-                ", gender=" + gender +
-                ", phonetype=" + phoneType +
                 '}';
     }
 }
