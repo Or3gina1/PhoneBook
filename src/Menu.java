@@ -24,7 +24,7 @@ public class Menu {
     public void start() throws ParseException {
         String action;
         do {
-            System.out.println("\n 1 - Добавить пользователя"); // не сделано
+            System.out.println("\n1 - Добавить пользователя"); // не сделано
             System.out.println("2 - Удалить пользователя "); //не сделано
             System.out.println("3 - Редактирование"); // не сделано
             System.out.println("4 - Поиск *"); // не сделано

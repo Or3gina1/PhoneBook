@@ -18,6 +18,14 @@ public class Phonebook {
     }
 
     public void addPerson(Person person) throws ParseException {
+        if (person != null) {
+            for (int i = 0; i < contacts.size(); i++) {
+                if (contacts.get(i) == null) {
+                    contacts.set(i, person);
+                    break;
+                }
+            }
+        }
         Scanner scanner = new Scanner(System.in);
         System.out.print("Введите имя: ");
         person.setName(scanner.nextLine());
@@ -31,6 +39,7 @@ public class Phonebook {
         person.setDateOfBirth(new SimpleDateFormat("dd.MM.yyyy").parse(scanner.nextLine()));
         person.setAge(calculateAge(person.getDateOfBirth()));
         System.out.println("Ваш возраст  " + calculateAge(person.getDateOfBirth()));
+
 //        System.out.print("Введите пол: ");
 //        person.changeGender(Person.getGender(scanner.nextLine()));
 //        System.out.print("Enter type: ");
@@ -38,7 +47,7 @@ public class Phonebook {
     }
 
     public void save(Person person) {
-        System.out.println(person.toString());
+//        System.out.println(person.toString());
         try (FileWriter writer = new FileWriter("contacts.txt")) {
                 writer.write(person.getId() + "\n");
                 writer.write(person.getName() + "\n");
