@@ -37,20 +37,20 @@ public class Menu {
             if (action.equals("1")) {
                 phonebook.addPerson(person);
             } else if (action.equals("2")) {
-                System.out.println("удаление пользователя по какому то парамеру"); //скорее всего по Id
-//                phonebook.deletePerson(person);
+                System.out.println("удаление пользователя по фамилии"); //скорее всего по Id
+                phonebook.deleteSurname();
             } else if (action.equals("3")) {
                 System.out.println("редактировать"); //уже добавленного
 
             } else if (action.equals("4")) {
                 System.out.println("Поиск"); // нужно ли реализовывать поиск и по * и по _
-                phonebook.search(person);
+                phonebook.searchByname(person);
             } else if (action.equals("5")) {
-                System.out.println("Фильтрация пользователей"); //постараться сделать через стрим
+                System.out.println("Фильтрация пользователей");
 
             } else if (action.equals("6")) {
-                System.out.println("сортировка пользователей"); //постараться сделать через стрим
-
+                System.out.println("сортировка пользователей по фамилии");
+                phonebook.orderSurName();
             } else if (action.equals("7")) {
                 phonebook.save(person);
             } else if (action.equals("8")) {
@@ -60,33 +60,5 @@ public class Menu {
         } while (true);
         scanner.close();
     }
-    private void deletePerson() {
-        // Запросить у пользователя информацию о человеке (например, ID, имя)
-        // Найти человека в телефонной книге
-        // Удалить человека из телефонной книги
-    }
-
-    private void editPerson() {
-        // Запросить у пользователя информацию о человеке (например, ID, имя)
-        // Найти человека в телефонной книге
-        // Запросить у пользователя новую информацию
-        // Создать новый объект Person с новой информацией
-        // Обновление информации о человеке в телефонной книге
-    }
-
-    private void searchByName() {
-        // Запросить у пользователя имя для поиска
-        // Вызов метода SearchByName телефонной книги
-        // Отображение результатов поиска
-    }
-//    public void save() {
-//        try {
-//            ObjectInputStream in = new ObjectInputStream(new FileInputStream("contacts.txt"));
-//            List<Person> contactsFromFile = (List<Person>) in.readObject();
-//            in.close();
-//            this.phonebook = contactsFromFile;
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
     }
 
