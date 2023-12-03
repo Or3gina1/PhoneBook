@@ -22,14 +22,14 @@ public class Phonebook {
         person.setName(scanner.nextLine());
         System.out.print("Введите Имя: ");
         person.setSurname(scanner.nextLine());
-        System.out.print("Введите отчество: ");
-        person.setFathername(scanner.nextLine());
-        System.out.print("Введите номер телефона: ");
-        person.setPhone(scanner.nextLine());
-        System.out.print("Введите дату рождения: формата дд.мм.гггг ");
-        person.setDateOfBirth(new SimpleDateFormat("dd.MM.yyyy").parse(scanner.nextLine()));
-        person.setAge(calculateAge(person.getDateOfBirth()));
-        System.out.println("Ваш возраст  " + calculateAge(person.getDateOfBirth()));
+//        System.out.print("Введите отчество: ");
+//        person.setFathername(scanner.nextLine());
+//        System.out.print("Введите номер телефона: ");
+//        person.setPhone(scanner.nextLine());
+//        System.out.print("Введите дату рождения: формата дд.мм.гггг ");
+//        person.setDateOfBirth(new SimpleDateFormat("dd.MM.yyyy").parse(scanner.nextLine()));
+//        person.setAge(calculateAge(person.getDateOfBirth()));
+//        System.out.println("Ваш возраст  " + calculateAge(person.getDateOfBirth()));
 
 //        System.out.print("Введите пол: ");
 //        person.changeGender(Person.getGender(scanner.nextLine()));
@@ -50,10 +50,11 @@ public class Phonebook {
 //            e.printStackTrace();
 //        }
 //    }
-        public void save(Person person) {
+        public void save() {
         try (FileOutputStream fileWriter = new FileOutputStream("contacts.txt")) {
             PrintWriter writer = new PrintWriter(fileWriter);
-            writer.write(contacts.toString());
+//            writer.write("");
+            writer.append(contacts.toString());
             writer.close();
             fileWriter.close();
             System.out.println("Данные сохранены в файл contacts.txt");

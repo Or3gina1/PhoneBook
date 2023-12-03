@@ -35,6 +35,7 @@ public class Menu {
 
             action = scanner.nextLine();
             if (action.equals("1")) {
+                person = new Person();
                 phonebook.addPerson(person);
             } else if (action.equals("2")) {
                 System.out.println("удаление пользователя по фамилии"); //скорее всего по Id
@@ -52,7 +53,7 @@ public class Menu {
                 System.out.println("сортировка пользователей по фамилии");
                 phonebook.orderSurName();
             } else if (action.equals("7")) {
-                phonebook.save(person);
+                phonebook.save();
             } else if (action.equals("8")) {
                 System.out.println("Выход");
                 break;
