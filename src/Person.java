@@ -5,7 +5,16 @@ enum Gender {
 }
 
 enum Phonetype {
-    MOBILE, HOME, FAX
+    MOBILE(0), HOME(1), FAX(2);
+
+    private final int value;
+
+    Phonetype (int value){
+        this.value = value;
+    }
+    public int getValue(){
+        return value;
+    }
 }
 public class Person {
 

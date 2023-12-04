@@ -29,9 +29,22 @@ public class Phonebook {
         person.setFathername(scanner.nextLine());
         System.out.print("Введите номер телефона: ");
         person.setPhone(scanner.nextLine());
-        System.out.println("Введите тип номера телефона: MOBILE/HOME/FAX");
-        Phonetype.values();
-        person.setPhonetype(Phonetype.valueOf(scanner.nextLine()));
+        System.out.println("Введите тип номера телефона: MOBILE-0,HOME-1, FAX-2");
+        int value =scan.nextInt();
+        for (int i =0; i<Phonetype.values().length;i++){
+            if (Phonetype.MOBILE.getValue()==value){
+                person.setPhonetype(Phonetype.valueOf(Phonetype.MOBILE.name()));
+                break;
+            }else if(Phonetype.FAX.getValue()==value){
+                person.setPhonetype(Phonetype.valueOf(Phonetype.FAX.name()));
+                break;
+            }else if(Phonetype.HOME.getValue()==value){
+                person.setPhonetype(Phonetype.valueOf(Phonetype.HOME.name()));
+                break;
+        }else {
+                System.out.println("Это не телефонный тип");
+            }
+        }
         System.out.print("Введите дату рождения: формата дд.мм.гггг ");
         person.setDateOfBirth(new SimpleDateFormat("dd.MM.yyyy").parse(scanner.nextLine()));
         person.setAge(calculateAge(person.getDateOfBirth()));
