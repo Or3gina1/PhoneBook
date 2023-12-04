@@ -9,16 +9,12 @@ import java.util.Scanner;
 public class Menu {
     private Phonebook phonebook;
     private Scanner scanner;
-
-//    public Person (){
-//
-//    };
     public Person person;
 
     public Menu() {
         phonebook = new Phonebook();
         scanner = new Scanner(System.in);
-        person = new Person();// нужно ли так делать или иначе?
+        person = new Person();
     }
 
     public void start() throws ParseException {

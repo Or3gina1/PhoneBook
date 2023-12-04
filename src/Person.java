@@ -1,7 +1,7 @@
 import java.util.Date;
 import java.util.Random;
 enum Gender {
-    MALE, FEMALE
+    Муж, Жен
 }
 
 enum Phonetype {
@@ -64,7 +64,18 @@ public class Person {
     public void setAge(int age) {
         this.age = age;
     }
-
+    public Gender getGender() {
+        return gender;
+    }
+    public void setGender(Gender gender) {
+        this.gender = gender;
+    }
+    public Phonetype getPhonetype() {
+        return phonetype;
+    }
+    public void setPhonetype(Phonetype phonetype) {
+        this.phonetype = phonetype;
+    }
 
     private int id;
     private String name;
@@ -73,11 +84,13 @@ public class Person {
     private String phone;
     private Date dateOfBirth;
     private int age;
+    private Gender gender;
+    private Phonetype phonetype;
 
     public Person(){
 
     }
-    public Person(int id, String name, String surname, String fathername, String phone, int age, Date dateOfBirth) {
+    public Person(int id, String name, String surname, String fathername, String phone, Date dateOfBirth, int age, Gender gender, Phonetype phonetype) {
         this.id = id;
         this.name = name;
         this.surname = surname;
@@ -85,18 +98,21 @@ public class Person {
         this.phone = phone;
         this.dateOfBirth = dateOfBirth;
         this.age = age;
-//        this.gender = gender;
-//        this.phoneType = phoneType;
+        this.gender = gender;
+        this.phonetype = phonetype;
     }
     public String toString() {
-        return "Person{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", surname='" + surname + '\'' +
-                ", fathername='" + fathername + '\'' +// для чего мы это делаем ? чтобы потом выводить в файл?
-                ", phone='" + phone + '\'' +
-                ", birthdate=" + dateOfBirth +
-                ", age=" + age +
-                '}';
+        return "========================="+'\n'+
+                " Абонент " +
+                " id => " + id + '\n'+
+                " Фамилия => " + surname + '\n' +
+                " Имя => " + name + '\n' +
+                " Отчество => " + fathername + '\n' +
+                " Номер телефона => " + phone +
+                " Тип телефона => " + phonetype + '\n'+
+                " Дата рождения =>" + dateOfBirth + '\n'+
+                " Возраст =>" + age + '\n'+
+                " пол =>" + gender + '\n' +
+                "========================================";
     }
 }

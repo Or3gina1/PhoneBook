@@ -13,6 +13,9 @@ public class Phonebook {
     public Phonebook() {
         contacts = new ArrayList<>();
     }
+    static Menu option = new Menu();
+    Scanner scan = new Scanner(System.in);
+//    int = option;
 
     public void addPerson(Person person) throws ParseException {
         contacts.add(person);
@@ -22,19 +25,21 @@ public class Phonebook {
         person.setName(scanner.nextLine());
         System.out.print("Введите Имя: ");
         person.setSurname(scanner.nextLine());
-//        System.out.print("Введите отчество: ");
-//        person.setFathername(scanner.nextLine());
-//        System.out.print("Введите номер телефона: ");
-//        person.setPhone(scanner.nextLine());
-//        System.out.print("Введите дату рождения: формата дд.мм.гггг ");
-//        person.setDateOfBirth(new SimpleDateFormat("dd.MM.yyyy").parse(scanner.nextLine()));
-//        person.setAge(calculateAge(person.getDateOfBirth()));
-//        System.out.println("Ваш возраст  " + calculateAge(person.getDateOfBirth()));
+        System.out.print("Введите отчество: ");
+        person.setFathername(scanner.nextLine());
+        System.out.print("Введите номер телефона: ");
+        person.setPhone(scanner.nextLine());
+        System.out.println("Введите тип номера телефона: MOBILE/HOME/FAX");
+        Phonetype.values();
+        person.setPhonetype(Phonetype.valueOf(scanner.nextLine()));
+        System.out.print("Введите дату рождения: формата дд.мм.гггг ");
+        person.setDateOfBirth(new SimpleDateFormat("dd.MM.yyyy").parse(scanner.nextLine()));
+        person.setAge(calculateAge(person.getDateOfBirth()));
+        System.out.println("Ваш возраст  " + calculateAge(person.getDateOfBirth()));
+        System.out.println("Введите пол: Муж/Жен");
+        Gender.values();
+        person.setGender(Gender.valueOf(scanner.nextLine()));
 
-//        System.out.print("Введите пол: ");
-//        person.changeGender(Person.getGender(scanner.nextLine()));
-//        System.out.print("Enter type: ");
-//        person.setType(Person.getTypeByName(scanner.nextLine()));
     }
 
 //    public void save(Person person) {
@@ -53,7 +58,6 @@ public class Phonebook {
         public void save() {
         try (FileOutputStream fileWriter = new FileOutputStream("contacts.txt")) {
             PrintWriter writer = new PrintWriter(fileWriter);
-//            writer.write("");
             writer.append(contacts.toString());
             writer.close();
             fileWriter.close();
@@ -90,7 +94,6 @@ public class Phonebook {
         Optional<Person> foundPerson =contacts.stream()
         .filter(p->p.getName().equals(scanner.nextLine()))
                 .findFirst();
-
         if (foundPerson.isPresent()){
             System.out.println("С таким именем найден контакт");
             System.out.println("Id "+foundPerson.get().getId());
@@ -98,24 +101,29 @@ public class Phonebook {
             System.out.println("Имя "+foundPerson.get().getName());
             System.out.println("Отчество "+foundPerson.get().getFathername());
             System.out.println("Номер телефона "+foundPerson.get().getPhone());
+            System.out.println("Тип телефона "+foundPerson.get().getPhonetype());
             System.out.println("Дата рождения "+foundPerson.get().getDateOfBirth());
             System.out.println("Возраст "+foundPerson.get().getAge());
-//            System.out.println("Пол "+foundPerson.get().getAge());
+            System.out.println("Пол "+foundPerson.get().getGender());
         }else {
             System.out.println("контакта с таким именем не существует");
         }
     }
     public void deleteSurname() throws ParseException {
-        System.out.println("Введите фамилию человека, чьи данные хотите удалить:");
+        System.out.println("Введите фамилию человека, контактные данные которого вы хотите удалить:");
         Scanner scanner = new Scanner(System.in);
+        String Surname = scanner.nextLine();
+        boolean Remove = false;
         for (Person person : contacts) {
-            if (person.getSurname().equals(scanner.nextLine())) {
+            if (person.getSurname()
+                      .equals(Surname)) {
                 contacts.remove(person);
-                System.out.println("Данные у контакте  успешно удалены.");
+                System.out.println("Данные о контакте  успешно удалены.");
                 break;
-            } else {
-                System.out.println("Человек с таким такой фамилией не найден.");
             }
+            }
+        if (Remove == false){
+            System.out.println("Человек с таким такой фамилией не найден.");
         }
     }
     public void deleteAll() throws ParseException {
@@ -137,11 +145,16 @@ public class Phonebook {
                 System.out.println("Номер телефона: " + person.getPhone());
                 System.out.println("Дата рождения: " + person.getDateOfBirth());
                 System.out.println("Возраст: " + person.getAge());
-                System.out.println("----------------------------------");
+                System.out.println("Пол: " + person.getGender());
+                System.out.println("Пол: " + person.getGender());
+
             });
         } else {
             System.out.println("Справочник пустой.");
         }
+    }
+
+    private class Static {
     }
 }
 
