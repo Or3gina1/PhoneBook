@@ -13,6 +13,7 @@ public class Phonebook {
     public Phonebook() {
         contacts = new ArrayList<>();
     }
+
     static Menu option = new Menu();
     Scanner scan = new Scanner(System.in);
 //    int = option;
@@ -30,18 +31,18 @@ public class Phonebook {
         System.out.print("Введите номер телефона: ");
         person.setPhone(scanner.nextLine());
         System.out.println("Введите тип номера телефона: MOBILE-0,HOME-1, FAX-2");
-        int value =scan.nextInt();
-        for (int i =0; i<Phonetype.values().length;i++){
-            if (Phonetype.MOBILE.getValue()==value){
+        int value = scan.nextInt();
+        for (int i = 0; i < Phonetype.values().length; i++) {
+            if (Phonetype.MOBILE.getValue() == value) {
                 person.setPhonetype(Phonetype.valueOf(Phonetype.MOBILE.name()));
                 break;
-            }else if(Phonetype.FAX.getValue()==value){
+            } else if (Phonetype.FAX.getValue() == value) {
                 person.setPhonetype(Phonetype.valueOf(Phonetype.FAX.name()));
                 break;
-            }else if(Phonetype.HOME.getValue()==value){
+            } else if (Phonetype.HOME.getValue() == value) {
                 person.setPhonetype(Phonetype.valueOf(Phonetype.HOME.name()));
                 break;
-        }else {
+            } else {
                 System.out.println("Это не телефонный тип");
             }
         }
@@ -49,26 +50,24 @@ public class Phonebook {
         person.setDateOfBirth(new SimpleDateFormat("dd.MM.yyyy").parse(scanner.nextLine()));
         person.setAge(calculateAge(person.getDateOfBirth()));
         System.out.println("Ваш возраст  " + calculateAge(person.getDateOfBirth()));
-        System.out.println("Введите пол: Муж/Жен");
-        Gender.values();
-        person.setGender(Gender.valueOf(scanner.nextLine()));
+        System.out.println("Введите пол: Жен-0, Муж-1");
+        int value1 = scan.nextInt();
+        for (int i = 0; i < Gender.values().length; i++) {
+            if (Gender.Муж.getValue1() == value1) {
+                person.setGender(Gender.valueOf(Gender.Муж.name()));
+                break;
+            } else if (Gender.Жен.getValue1() == value1) {
+                person.setGender(Gender.valueOf(Gender.Жен.name()));
+                break;
+            } else {
+                System.out.println("Такого гендера нет");
+            }
+        }
+
 
     }
 
-//    public void save(Person person) {
-//        try (FileWriter writer = new FileWriter("contacts.txt")) {
-//                writer.write(person.getId() + "\n");
-//                writer.write(person.getName() + "\n");
-//                writer.write(person.getSurname() + "\n");
-//                writer.write(person.getFathername() + "\n");
-//                writer.write(person.getPhone() + "\n");
-//                writer.write(person.getDateOfBirth() + "\n");
-//                writer.write(person.getAge() + "\n");
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//    }
-        public void save() {
+    public void save() {
         try (FileOutputStream fileWriter = new FileOutputStream("contacts.txt")) {
             PrintWriter writer = new PrintWriter(fileWriter);
             writer.append(contacts.toString());
@@ -79,9 +78,6 @@ public class Phonebook {
             e.printStackTrace();
         }
     }
-    // Запросить у пользователя информацию о человеке
-    // Создать новый объект Person
-    // Добавить человека в телефонную книгу
 
     private int calculateAge(Date birthdate) {
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy");
@@ -92,36 +88,36 @@ public class Phonebook {
         int age = period.getYears();
         return age;
     }
-//    public List<Person> deletePerson(id) {
-//        contacts.remove(id);
-//    }
+
     public void editPerson(Person oldPerson, Person newPerson) {
         int index = contacts.indexOf(oldPerson);
         if (index >= 0) {
             contacts.set(index, newPerson);
         }
     }
+
     public void searchByname(Person person) {
         System.out.println("Введите имя: ");
         Scanner scanner = new Scanner(System.in);
-        Optional<Person> foundPerson =contacts.stream()
-        .filter(p->p.getName().equals(scanner.nextLine()))
+        Optional<Person> foundPerson = contacts.stream()
+                .filter(p -> p.getName().equals(scanner.nextLine()))
                 .findFirst();
-        if (foundPerson.isPresent()){
+        if (foundPerson.isPresent()) {
             System.out.println("С таким именем найден контакт");
-            System.out.println("Id "+foundPerson.get().getId());
-            System.out.println("Фамилия "+foundPerson.get().getSurname());
-            System.out.println("Имя "+foundPerson.get().getName());
-            System.out.println("Отчество "+foundPerson.get().getFathername());
-            System.out.println("Номер телефона "+foundPerson.get().getPhone());
-            System.out.println("Тип телефона "+foundPerson.get().getPhonetype());
-            System.out.println("Дата рождения "+foundPerson.get().getDateOfBirth());
-            System.out.println("Возраст "+foundPerson.get().getAge());
-            System.out.println("Пол "+foundPerson.get().getGender());
-        }else {
+            System.out.println("Id " + foundPerson.get().getId());
+            System.out.println("Фамилия " + foundPerson.get().getSurname());
+            System.out.println("Имя " + foundPerson.get().getName());
+            System.out.println("Отчество " + foundPerson.get().getFathername());
+            System.out.println("Номер телефона " + foundPerson.get().getPhone());
+            System.out.println("Тип телефона " + foundPerson.get().getPhonetype());
+            System.out.println("Дата рождения " + foundPerson.get().getDateOfBirth());
+            System.out.println("Возраст " + foundPerson.get().getAge());
+            System.out.println("Пол " + foundPerson.get().getGender());
+        } else {
             System.out.println("контакта с таким именем не существует");
         }
     }
+
     public void deleteSurname() throws ParseException {
         System.out.println("Введите фамилию человека, контактные данные которого вы хотите удалить:");
         Scanner scanner = new Scanner(System.in);
@@ -129,25 +125,28 @@ public class Phonebook {
         boolean Remove = false;
         for (Person person : contacts) {
             if (person.getSurname()
-                      .equals(Surname)) {
+                    .equals(Surname)) {
                 contacts.remove(person);
                 System.out.println("Данные о контакте  успешно удалены.");
                 break;
             }
-            }
-        if (Remove == false){
+        }
+        if (Remove == false) {
             System.out.println("Человек с таким такой фамилией не найден.");
         }
     }
+
     public void deleteAll() throws ParseException {
         contacts.clear();
         System.out.println("Все данные удалены.");
     }
+
     public void orderSurName() {// поиск по фамилии так как она реже имеет совпадение)
         contacts.sort(Comparator.comparing(Person::getSurname));
         System.out.println("Результаты отсортированы по имени:");
         showAll();
     }
+
     public void showAll() {
         System.out.println("Общий список телефонный книги");
         if (contacts != null) {

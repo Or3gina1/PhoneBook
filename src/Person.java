@@ -1,7 +1,14 @@
 import java.util.Date;
 import java.util.Random;
 enum Gender {
-    Муж, Жен
+    Муж(1), Жен(0);
+    private final int value1;
+    Gender (int value1){
+        this.value1 = value1;
+    }
+    public int getValue1(){
+        return value1;
+    }
 }
 
 enum Phonetype {
@@ -119,9 +126,9 @@ public class Person {
                 " Отчество => " + fathername + '\n' +
                 " Номер телефона => " + phone +
                 " Тип телефона => " + phonetype + '\n'+
-                " Дата рождения =>" + dateOfBirth + '\n'+
-                " Возраст =>" + age + '\n'+
-                " пол =>" + gender + '\n' +
+                " Дата рождения => " + dateOfBirth + '\n'+
+                " Возраст => " + age + '\n'+
+                " пол => " + gender + '\n' +
                 "========================================";
     }
 }
