@@ -70,8 +70,28 @@ public class Phonebook {
             contacts.set(index, newPerson);
         }
     }
-
-    public void searchByname(Person person) {
+    public void searchMenu() throws ParseException {
+        int select = scan.nextInt();
+        switch (select) {
+            case 1:
+                searchByname();// Запрос информации о пользователе по имени
+            case 2:
+//                searchBySurName();// Запрос информации о пользователе по фамилии
+//            case 3:
+//                searchBySex();// Запрос информации о пользователе по полу
+//            case 4:
+//                searchByTelNum();// Запрос информации о пользователе по номеру телефона
+//            case 5:
+//                searchByAge();// Запрос информации о пользователе по возрасту
+            case 6:
+                showAll();// Запрос всей пользовательской информации
+            case 7:
+//                .Menu();// Возврат в предыдущее меню
+                break;
+//                System.out.println("Неверный выбор. Введите значение от 1 до 7: ");
+        }
+    }
+    public void searchByname() {
         System.out.println("Введите имя: ");
         Scanner scanner = new Scanner(System.in);
         Optional<Person> foundPerson = contacts.stream()

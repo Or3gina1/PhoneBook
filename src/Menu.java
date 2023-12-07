@@ -40,8 +40,8 @@ public class Menu {
                 System.out.println("редактировать"); //уже добавленного
 
             } else if (action.equals("4")) {
-                System.out.println("Поиск"); // нужно ли реализовывать поиск и по * и по _
-                phonebook.searchByname(person);
+                System.out.println("Поиск");
+                phonebook.searchMenu();
             } else if (action.equals("5")) {
                 System.out.println("Фильтрация пользователей");
 
