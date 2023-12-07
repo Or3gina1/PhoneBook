@@ -31,40 +31,15 @@ public class Phonebook {
         System.out.print("Введите номер телефона: ");
         person.setPhone(scanner.nextLine());
         System.out.println("Введите тип номера телефона: MOBILE-0,HOME-1, FAX-2");
-        int value = scan.nextInt();
-        for (int i = 0; i < Phonetype.values().length; i++) {
-            if (Phonetype.MOBILE.getValue() == value) {
-                person.setPhonetype(Phonetype.valueOf(Phonetype.MOBILE.name()));
-                break;
-            } else if (Phonetype.FAX.getValue() == value) {
-                person.setPhonetype(Phonetype.valueOf(Phonetype.FAX.name()));
-                break;
-            } else if (Phonetype.HOME.getValue() == value) {
-                person.setPhonetype(Phonetype.valueOf(Phonetype.HOME.name()));
-                break;
-            } else {
-                System.out.println("Это не телефонный тип");
-            }
-        }
+        int valueForTypePhone = scan.nextInt();
+        person.setPhonetype(Phonetype.getPhoneType(valueForTypePhone));
         System.out.print("Введите дату рождения: формата дд.мм.гггг ");
         person.setDateOfBirth(new SimpleDateFormat("dd.MM.yyyy").parse(scanner.nextLine()));
         person.setAge(calculateAge(person.getDateOfBirth()));
         System.out.println("Ваш возраст  " + calculateAge(person.getDateOfBirth()));
         System.out.println("Введите пол: Жен-0, Муж-1");
-        int value1 = scan.nextInt();
-        for (int i = 0; i < Gender.values().length; i++) {
-            if (Gender.Муж.getValue1() == value1) {
-                person.setGender(Gender.valueOf(Gender.Муж.name()));
-                break;
-            } else if (Gender.Жен.getValue1() == value1) {
-                person.setGender(Gender.valueOf(Gender.Жен.name()));
-                break;
-            } else {
-                System.out.println("Такого гендера нет");
-            }
-        }
-
-
+        int valueForGender = scanner.nextInt();
+        person.setGender(Gender.getGenderType(valueForGender));
     }
 
     public void save() {
