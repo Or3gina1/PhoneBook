@@ -11,8 +11,9 @@ enum Gender {
     }
     public static Gender getGenderType(int value1){
         for (Gender type: Gender.values()){
-            if ((type.getValue1() == value1));
-            return type;
+            if (type.getValue1() == value1) {
+                return type;
+            }
         }
         throw new IllegalArgumentException("Такого типа не существует");
     }
@@ -31,8 +32,9 @@ enum Phonetype {
     }
     public static Phonetype getPhoneType(int value){
         for (Phonetype type: Phonetype.values()){
-            if ((type.getValue() == value));
+            if (type.getValue() == value){
             return type;
+            }
         }
         throw new IllegalArgumentException("Такого типа не существует");
     }

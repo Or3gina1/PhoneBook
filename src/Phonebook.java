@@ -95,10 +95,12 @@ public class Phonebook {
                 searchByGender();// поиск по полу
                 option.searchMenu();
             case 8:
-                option.start();// Возврат в предыдущее меню
+                showAll();// Возврат в предыдущее меню
+            case 9:
+                option.start();
                 break;
             default:
-                System.out.println("Неверный выбор. Введите значение от 1 до 8: ");
+                System.out.println("Неверный выбор. Введите значение от 1 до 9: ");
         }
     }
     public void searchByname() {
@@ -222,10 +224,11 @@ public class Phonebook {
                 System.out.println("Id: " + person.getId());
                 System.out.println("Фамилия: " + person.getSurname());
                 System.out.println("Имя: " + person.getName());
+                System.out.println("Отчество: " + person.getFathername());
                 System.out.println("Номер телефона: " + person.getPhone());
+                System.out.println("Тип телефона телефона: " + person.getPhonetype());
                 System.out.println("Дата рождения: " + person.getDateOfBirth());
                 System.out.println("Возраст: " + person.getAge());
-                System.out.println("Пол: " + person.getGender());
                 System.out.println("Пол: " + person.getGender());
 
             });
