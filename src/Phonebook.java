@@ -70,49 +70,122 @@ public class Phonebook {
             contacts.set(index, newPerson);
         }
     }
-    public void searchMenu() throws ParseException {
+    public void searchLogic() throws ParseException {
         int select = scan.nextInt();
         switch (select) {
             case 1:
-                searchByname();// Запрос информации о пользователе по имени
+                searchByname();// поиск по имени
+                option.searchMenu();
             case 2:
-//                searchBySurName();// Запрос информации о пользователе по фамилии
-//            case 3:
-//                searchBySex();// Запрос информации о пользователе по полу
-//            case 4:
-//                searchByTelNum();// Запрос информации о пользователе по номеру телефона
-//            case 5:
-//                searchByAge();// Запрос информации о пользователе по возрасту
+                searchBySurName();// поиск фамилии по фамилии
+                option.searchMenu();
+            case 3:
+                searchByFatherName();// поиск по Отчеству
+                option.searchMenu();
+            case 4:
+                searchByPhoneNumber();// поиск по номеру телефона
+                option.searchMenu();
+            case 5:
+                searchByPhoneType();// поиск по Типу телефона
+                option.searchMenu();
             case 6:
-                showAll();// Запрос всей пользовательской информации
+                searchByAge();// поиск по Возрасту
+                option.searchMenu();
             case 7:
-//                .Menu();// Возврат в предыдущее меню
+                searchByGender();// поиск по полу
+                option.searchMenu();
+            case 8:
+                option.start();// Возврат в предыдущее меню
                 break;
-//                System.out.println("Неверный выбор. Введите значение от 1 до 7: ");
+            default:
+                System.out.println("Неверный выбор. Введите значение от 1 до 8: ");
         }
     }
     public void searchByname() {
-        System.out.println("Введите имя: ");
         Scanner scanner = new Scanner(System.in);
-        Optional<Person> foundPerson = contacts.stream()
-                .filter(p -> p.getName().equals(scanner.nextLine()))
-                .findFirst();
-        if (foundPerson.isPresent()) {
-            System.out.println("С таким именем найден контакт");
-            System.out.println("Id " + foundPerson.get().getId());
-            System.out.println("Фамилия " + foundPerson.get().getSurname());
-            System.out.println("Имя " + foundPerson.get().getName());
-            System.out.println("Отчество " + foundPerson.get().getFathername());
-            System.out.println("Номер телефона " + foundPerson.get().getPhone());
-            System.out.println("Тип телефона " + foundPerson.get().getPhonetype());
-            System.out.println("Дата рождения " + foundPerson.get().getDateOfBirth());
-            System.out.println("Возраст " + foundPerson.get().getAge());
-            System.out.println("Пол " + foundPerson.get().getGender());
-        } else {
-            System.out.println("контакта с таким именем не существует");
+        System.out.println("Введите имя: ");
+        String name = scanner.nextLine();
+        List<Person> foundPerson = contacts.stream()
+                                           .filter(p -> p.getName()
+                                           .equals(name))
+                                           .collect(Collectors.toList());
+        for (Person person: foundPerson){
+            System.out.println(person.toString());
         }
     }
-
+    public void searchBySurName() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Введите фамилию: ");
+        String SurName = scanner.nextLine();
+        List<Person> foundPerson = contacts.stream()
+                .filter(p -> p.getSurname()
+                        .equals(SurName))
+                .collect(Collectors.toList());
+        for (Person person: foundPerson){
+            System.out.println(person.toString());
+        }
+    }
+    public void searchByFatherName() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Введите Отчество: ");
+        String FatherName = scanner.nextLine();
+        List<Person> foundPerson = contacts.stream()
+                .filter(p -> p.getFathername()
+                        .equals(FatherName))
+                .collect(Collectors.toList());
+        for (Person person: foundPerson){
+            System.out.println(person.toString());
+        }
+    }
+    public void searchByPhoneNumber() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Введите номер телефона: ");
+        String PhoneNumber = scanner.nextLine();
+        List<Person> foundPerson = contacts.stream()
+                                           .filter(p -> p.getPhone()
+                                           .equals(PhoneNumber))
+                                           .collect(Collectors.toList());
+        for (Person person: foundPerson){
+            System.out.println(person.toString());
+        }
+    }
+    public void searchByPhoneType() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Введите имя: ");
+        String PhoneType = scanner.nextLine();
+        List<Person> foundPerson = contacts.stream()
+                                           .filter(p -> p.getPhonetype()
+                                           .equals(PhoneType))
+                                           .collect(Collectors.toList());
+        for (Person person: foundPerson){
+            System.out.println(person.toString());
+        }
+    }
+    public void searchByAge() {
+        Scanner scanner = new Scanner(System.in);
+        int ageMin;
+        int ageMax;
+        System.out.println("Введите минимальный возраст от: ");
+        ageMin = scanner.nextInt();
+        System.out.println("Введите максимальный возраст до: ");
+        ageMax = scanner.nextInt();
+        List<Person> foundPerson = contacts.stream()
+                                           .filter(p -> p.getAge() >= ageMin && p.getAge() <= ageMax)
+                                           .collect(Collectors.toList());
+        for (Person person : foundPerson) {
+            System.out.println(person.toString());
+        }
+    }
+    public void searchByGender() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Введите пол, (мужчина - м) (женщина - ж)");
+        List<Person> foundPerson = contacts.stream()
+                .filter(p -> p.getGender().equals(scanner.nextLine()))
+                .collect(Collectors.toList());
+        for (Person person : foundPerson) {
+            System.out.println(person.toString());
+        }
+    }
     public void deleteSurname() throws ParseException {
         System.out.println("Введите фамилию человека, контактные данные которого вы хотите удалить:");
         Scanner scanner = new Scanner(System.in);

@@ -20,14 +20,14 @@ public class Menu {
     public void start() throws ParseException {
         String action;
         do {
-            System.out.println("\n1 - Добавить пользователя"); // не сделано
+            System.out.println("\n1 - Добавить пользователя"); // сделано
             System.out.println("2 - Удалить пользователя "); //не сделано
-            System.out.println("3 - Редактирование"); // не сделано
-            System.out.println("4 - Поиск *"); // не сделано
-            System.out.println("5 - Фильтрация пользователей"); // не сделано
-            System.out.println("6 - сортировка пользователей"); //не сделано
-            System.out.println("7 - сохранить в файл"); // не сделано
-            System.out.println("8 - выход"); // не сделано
+            System.out.println("3 - Редактирование контактов"); // не сделано
+            System.out.println("4 - Поиск контактов"); // не сделано
+            System.out.println("5 - Фильтрация контактов"); // не сделано
+            System.out.println("6 - Сортировка контактов"); //не сделано
+            System.out.println("7 - сохранить в файл"); // сделано
+            System.out.println("8 - выход"); // сделано
 
             action = scanner.nextLine();
             if (action.equals("1")) {
@@ -41,7 +41,7 @@ public class Menu {
 
             } else if (action.equals("4")) {
                 System.out.println("Поиск");
-                phonebook.searchMenu();
+                searchMenu();
             } else if (action.equals("5")) {
                 System.out.println("Фильтрация пользователей");
 
@@ -57,5 +57,19 @@ public class Menu {
         } while (true);
         scanner.close();
     }
+
+    public void searchMenu() throws ParseException {
+        System.out.println("\n==Меню поиска==");
+        System.out.println("==1 Поиск по имени==");
+        System.out.println("==2 Найти по фамилии==");
+        System.out.println("==3 Найти по Отчеству==");
+        System.out.println("==4 Поиск по номеру телефона==");
+        System.out.println("==5 Поиск по типу телефона==");
+        System.out.println("==6 Поиск по возрасту==");
+        System.out.println("==7 Поиск по полу==");
+        System.out.println("==8 Просмотреть контакты");
+        System.out.println("==9 Вернуться назад==");
+        phonebook.searchLogic();
     }
+}
 
