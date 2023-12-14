@@ -23,9 +23,9 @@ public class Phonebook {
         Scanner scanner = new Scanner(System.in);
         person.setId((new Random()).nextInt(100));
         System.out.print("Введите Фамилию: ");
-        person.setName(scanner.nextLine());
-        System.out.print("Введите Имя: ");
         person.setSurname(scanner.nextLine());
+        System.out.print("Введите Имя: ");
+        person.setName(scanner.nextLine());
         System.out.print("Введите отчество: ");
         person.setFathername(scanner.nextLine());
         System.out.print("Введите номер телефона: ");
@@ -193,7 +193,9 @@ public class Phonebook {
         Scanner scanner = new Scanner(System.in);
         String Surname = scanner.nextLine();
         boolean Remove = false;
+        System.out.println("1");
         for (Person person : contacts) {
+            System.out.println("2");
             if (person.getSurname()
                     .equals(Surname)) {
                 contacts.remove(person);
@@ -201,7 +203,8 @@ public class Phonebook {
                 break;
             }
         }
-        if (Remove == false) {
+        System.out.println("3");
+        if (Remove == true) {
             System.out.println("Человек с таким такой фамилией не найден.");
         }
     }
@@ -235,9 +238,6 @@ public class Phonebook {
         } else {
             System.out.println("Справочник пустой.");
         }
-    }
-
-    private class Static {
     }
 }
 
